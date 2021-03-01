@@ -35,7 +35,7 @@ def user_detail_api_view(request,pk=None):
     if user:
 
         # retrieve
-        if request.method == 'GET':            
+        if request.method == 'GET': 
             user_serializer = UserSerializer(user)
             return Response(user_serializer.data,status = status.HTTP_200_OK)
         
