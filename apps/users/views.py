@@ -10,11 +10,28 @@ from rest_framework.authtoken.views import ObtainAuthToken
 
 from apps.users.api.serializers import UserTokenSerializer
 
+class UserToken(APIView):
+    def get(self,request,*args,**kwargs):
+        username = request.GET.get('username')
+        try:
+            user_token = Token.objects.get(
+                user = UserTokenSerializer().Meta.model.objects.filter(username = username).first()
+            )
+            return Response({
+                'token': user_token.key
+            })
+        except:
+            return Response({
+                'error': 'Credenciales enviadas incorrectas.'
+            },status = status.HTTP_400_BAD_REQUEST)
+
 class Login(ObtainAuthToken):
 
     def post(self,request,*args,**kwargs):
+        # send to serializer username and password
         login_serializer = self.serializer_class(data = request.data, context = {'request':request})
         if login_serializer.is_valid():
+            # login serializer return user in validated_data
             user = login_serializer.validated_data['user']
             if user.is_active:
                 token,created = Token.objects.get_or_create(user = user)
@@ -51,7 +68,6 @@ class Login(ObtainAuthToken):
         else:
             return Response({'error': 'Nombre de usuario o contraseña incorrectos.'},
                                     status = status.HTTP_400_BAD_REQUEST)
-        return Response({'mensaje':'Hola desde response'}, status = status.HTTP_200_OK)
 
 class Logout(APIView):
 
@@ -62,14 +78,15 @@ class Logout(APIView):
 
             if token:
                 user = token.user
-                
+                # delete all sessions for user
                 all_sessions = Session.objects.filter(expire_date__gte = datetime.now())
                 if all_sessions.exists():
                     for session in all_sessions:
                         session_data = session.get_decoded()
+                        # search auth_user_id, this field is primary_key's user on the session
                         if user.id == int(session_data.get('_auth_user_id')):
                             session.delete()
-                
+                # delete user token
                 token.delete()
                 
                 session_message = 'Sesiones de usuario eliminadas.'  
