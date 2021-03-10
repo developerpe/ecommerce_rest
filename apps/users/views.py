@@ -11,6 +11,9 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from apps.users.api.serializers import UserTokenSerializer
 
 class UserToken(APIView):
+    """
+    Return Token for an username sended
+    """
     def get(self,request,*args,**kwargs):
         username = request.GET.get('username')
         try:
