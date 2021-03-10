@@ -10,6 +10,12 @@ class Authentication(object):
     user_token_expired = False
     
     def get_user(self,request):
+        """
+        Return:
+            * user      : User Instance or 
+            * message   : Error Message or 
+            * None      : Corrup Token
+        """
         token = get_authorization_header(request).split()
         if token:
             try:
@@ -32,6 +38,11 @@ class Authentication(object):
         user = self.get_user(request)
         # found token in request
         if user is not None:
+            """
+            Possible value of variable user:
+            * User Instance
+            * Message like: Token Inválido, Usuario no activo o eliminado, Su Token ha expirado
+            """
             if type(user) == str:
                 response = Response({'error':user,'expired':self.user_token_expired},
                                             status = status.HTTP_400_BAD_REQUEST)
@@ -40,6 +51,7 @@ class Authentication(object):
                 response.renderer_context = {}
                 return response
             
+            # only user_token_expired = True, the request can be continue
             if not self.user_token_expired:
                 return super().dispatch(request, *args, **kwargs)
         
