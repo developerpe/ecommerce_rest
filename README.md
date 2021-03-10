@@ -1,6 +1,6 @@
-#This project belongs to Course: https://www.youtube.com/watch?v=MMFBD2Eoeuk&list=PLMbRqrU_kvbRI4PgSzgbh8XPEwC1RNj8F
+# This project belongs to Course: https://www.youtube.com/watch?v=MMFBD2Eoeuk&list=PLMbRqrU_kvbRI4PgSzgbh8XPEwC1RNj8F
 
-### Config
+### Initial Configuration
 
 This project include default migrations that you can see on the course, also include a SQLITE DB with example data. 
 
