@@ -6,7 +6,7 @@
 *.log
 *.pot
 *.pyc
-__pycache__/
+__pycache__
 .vscode/
 .env
 #db.sqlite3
