@@ -6,17 +6,17 @@ This project include default migrations that you can see on the course, also inc
 
 1.- Clone this repository:
 
-                       ` git clone https://github.com/developerpe/ecommerce_rest.git` 
+                        git clone https://github.com/developerpe/ecommerce_rest.git 
 
 2.- Create a virtual environment :
 
-                                 `virtualenv name_env`
+                                 virtualenv name_env
 
 3.- Active vitual environment.
 
 4.- Install libraries.
 
-                    `(env) pip install -r requirements.txt` 
+                    (env) pip install -r requirements.txt 
 
-7.- Run commande:
-                    `(env) python manage.py runserver` 
+5.- Run commande:
+                    (env) python manage.py runserver 
