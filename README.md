@@ -19,4 +19,6 @@ This project include default migrations that you can see on the course, also inc
                     (env) pip install -r requirements.txt 
 
 5.- Run command:
+
                     (env) python manage.py runserver 
+
