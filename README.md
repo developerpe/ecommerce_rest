@@ -12,11 +12,11 @@ This project include default migrations that you can see on the course, also inc
 
                                  virtualenv name_env
 
-3.- Active vitual environment.
+3.- Active virtual environment.
 
 4.- Install libraries.
 
                     (env) pip install -r requirements.txt 
 
-5.- Run commande:
+5.- Run command:
                     (env) python manage.py runserver 
