@@ -22,13 +22,14 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('admin/', admin.site.urls),
-    path('logout/', Logout.as_view(), name = 'logout'),
-    path('',Login.as_view(), name = 'login'),
-    path('refresh-token/',UserToken.as_view(), name = 'refresh_token'),
-    path('usuario/',include('apps.users.api.urls')),
-    path('products/',include('apps.products.api.routers')),
+   path('automatic-crud/',include('automatic_crud.urls')),
+   re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+   path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+   path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+   path('admin/', admin.site.urls),
+   path('logout/', Logout.as_view(), name = 'logout'),
+   path('login/',Login.as_view(), name = 'login'),
+   path('refresh-token/',UserToken.as_view(), name = 'refresh_token'),
+   path('usuario/',include('apps.users.api.urls')),
+   path('products/',include('apps.products.api.routers')),
 ]
