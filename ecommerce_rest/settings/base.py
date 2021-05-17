@@ -48,7 +48,7 @@ SWAGGER_SETTINGS = {
     'DOC_EXPANSION': 'none'
 }
 
-TOKEN_EXPIRED_AFTER_SECONDS = 900
+TOKEN_EXPIRED_AFTER_SECONDS = 10
 
 MIDDLEWARE = [    
     'django.middleware.security.SecurityMiddleware',
@@ -116,10 +116,6 @@ USE_L10N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = 'users.User'
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
-]
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000"

@@ -7,7 +7,6 @@ from apps.users.authentication import ExpiringTokenAuthentication
 
 class Authentication(object):
     user = None
-    user_token_expired = False
     
     def get_user(self,request):
         """
@@ -24,13 +23,11 @@ class Authentication(object):
                 return None            
         
             token_expire = ExpiringTokenAuthentication()
-            user,token,message,self.user_token_expired = token_expire.authenticate_credentials(token)
+            user = token_expire.authenticate_credentials(token)
             
-            if user != None and token != None:
+            if user != None:
                 self.user = user
                 return user
-            
-            return message
         
         return None
 
@@ -38,25 +35,9 @@ class Authentication(object):
         user = self.get_user(request)
         # found token in request
         if user is not None:
-            """
-            Possible value of variable user:
-            * User Instance
-            * Message like: Token Inválido, Usuario no activo o eliminado, Su Token ha expirado
-            """
-            if type(user) == str:
-                response = Response({'error':user,'expired':self.user_token_expired},
-                                            status = status.HTTP_400_BAD_REQUEST)
-                response.accepted_renderer = JSONRenderer()
-                response.accepted_media_type = 'application/json'
-                response.renderer_context = {}
-                return response
-            
-            # only user_token_expired = True, the request can be continue
-            if not self.user_token_expired:
-                return super().dispatch(request, *args, **kwargs)
+            return super().dispatch(request, *args, **kwargs)
         
-        response = Response({'error': 'No se han enviado las credenciales.',
-                                'expired':self.user_token_expired},status = status.HTTP_400_BAD_REQUEST)
+        response = Response({'error': 'No se han enviado las credenciales.'},status = status.HTTP_400_BAD_REQUEST)
         response.accepted_renderer = JSONRenderer()
         response.accepted_media_type = 'application/json'
         response.renderer_context = {}
