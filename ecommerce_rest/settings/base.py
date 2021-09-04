@@ -48,7 +48,15 @@ SWAGGER_SETTINGS = {
     'DOC_EXPANSION': 'none'
 }
 
-TOKEN_EXPIRED_AFTER_SECONDS = 10
+TOKEN_EXPIRED_AFTER_SECONDS = 80000
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'apps.users.authentication_mixins.Authentication',
+    )
+
+}
 
 MIDDLEWARE = [    
     'django.middleware.security.SecurityMiddleware',
