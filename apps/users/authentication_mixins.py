@@ -1,4 +1,4 @@
-from rest_framework import status, exceptions, authentication
+from rest_framework import status, authentication, exceptions
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from rest_framework.authentication import get_authorization_header
@@ -33,9 +33,10 @@ class Authentication(authentication.BaseAuthentication):
 
     def authenticate(self, request):
         self.get_user(request)
-        
         if self.user is None:
             raise exceptions.AuthenticationFailed('No se han enviado las credenciales.')
-        
-        return (self.user, self.user)
+
+        return (self.user, 1)
+
+
     

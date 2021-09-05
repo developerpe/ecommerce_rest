@@ -51,11 +51,9 @@ SWAGGER_SETTINGS = {
 TOKEN_EXPIRED_AFTER_SECONDS = 80000
 
 REST_FRAMEWORK = {
-
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'apps.users.authentication_mixins.Authentication',
-    )
-
+    ]
 }
 
 MIDDLEWARE = [    

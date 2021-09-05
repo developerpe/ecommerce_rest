@@ -7,6 +7,7 @@ from apps.base.api import GeneralListApiView
 from apps.users.authentication_mixins import Authentication
 from apps.products.api.serializers.product_serializers import ProductSerializer
 
+
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
 

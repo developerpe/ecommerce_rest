@@ -1,0 +1,185 @@
+[33mcommit 96835c8b47e0975a056e4177e25c41e9817dd846[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Fri Sep 3 20:17:16 2021 -0500
+
+    Como funciona la Authenticacion en Django Rest Framework
+
+[33mcommit 7e824ec45be29f7b6c5419fa9255139cb6142c9e[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Wed Jul 14 19:02:29 2021 -0500
+
+    actualizar y eliminar categoria de producto agregado
+
+[33mcommit d7a9bcb3473f5d46b5900f6cba41e082a8c18c83[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Wed Jul 14 17:55:50 2021 -0500
+
+    eliminacion de categoria de producto agregada
+
+[33mcommit 99ca11a7c9d483ab8040b1afd5879752fa3c69bb[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Thu Jun 10 19:28:06 2021 -0500
+
+    registrar categoria de productos agregada
+
+[33mcommit 82252a0aececa9fb6e8c990104691abf9d7b981b[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Sun May 16 19:45:43 2021 -0500
+
+    agregado ruta de CORS, corregida ruta de Refresh Token
+
+[33mcommit 49897a30a055d46817c6f530da593954edba8a28[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Mon May 3 00:18:55 2021 -0500
+
+    cors-headers agregado
+
+[33mcommit a549c89fc2865b5b49548a30b75865ccfe219e65[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:47:04 2021 -0500
+
+    menor errors in gitignore
+
+[33mcommit 43f9607ddde7f1e1f31f44b4e86a9629b71b6fe7[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:46:09 2021 -0500
+
+    delete cache
+
+[33mcommit 7eb694ecdb15f1a2866ef00ef0cbf0a56d3c9d3f[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:44:18 2021 -0500
+
+    delete __pycache__
+
+[33mcommit 6113e2108583fefcad7b9ab47b875fd108f69fc7[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:42:04 2021 -0500
+
+    add gitignore
+
+[33mcommit 4870299ec7f46bb3ef0f9490bdd22e76ef3b2cf5[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:40:51 2021 -0500
+
+    delete comments in general_viewsets
+
+[33mcommit 0533a7287f8123bb1bd486300d45280e25ebeb64[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:37:34 2021 -0500
+
+    README
+
+[33mcommit 406aa92984dcfad44bb11e6394cdced65e2ff4fe[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:36:51 2021 -0500
+
+    menor errors in README
+
+[33mcommit ae882778b7e0778f0050b98e242cb9c669c256ee[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:36:07 2021 -0500
+
+    menor errors in README
+
+[33mcommit a61584a98fd20201d638aa2f8103fa3cbeedf9f5[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:35:08 2021 -0500
+
+    add requirements
+
+[33mcommit 7dd2b1cda83200beaa45384e091b5ef6feea2be8[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 19:34:18 2021 -0500
+
+    add README
+
+[33mcommit 6c600309da41ae3435254d9610876000c6099abb[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 16:10:04 2021 -0500
+
+    agregada clase Authentication que valida toda la autenticacion del sistema
+
+[33mcommit 489c4fb61ccfe8030037fb73ae842dc95c8a58af[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 02:21:32 2021 -0500
+
+    logout agregado
+
+[33mcommit f97270c91b7fad97bf1009ef4d5d90e142bc2e3f[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Mar 9 02:02:31 2021 -0500
+
+    login con authtoken + sesiones + usuarios agregados
+
+[33mcommit 339ea59ba69023ff2752a0740deeaef70118f273[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Mon Mar 1 03:08:49 2021 -0500
+
+    autodocumentacion de endpoints de API con Swagger implementada
+
+[33mcommit 2461612ed2b983a27517db9aae2ee0b9ea4ee1f7[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Feb 23 08:06:34 2021 -0500
+
+    añadido routers y viewsets para products
+
+[33mcommit 0004700f9515cd897e386afcc2c3607720a2029b[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Fri Feb 19 01:18:58 2021 -0500
+
+    retrieve_update_destroy_api_view explicado e implementado en productos
+
+[33mcommit b2eed12934d497d6b7a54d94e15c7a8f323256cc[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Mon Feb 8 01:49:04 2021 -0500
+
+    implementado ListCreateApiView en product_viewset
+
+[33mcommit a24f35ef33c88bec76afe84253cfe786291b30d3[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Sat Jan 9 02:02:59 2021 -0500
+
+    updateapiview en modelo Producto
+
+[33mcommit 1a4c2fdb2b8e1c4171200168f9378c4a9e958fc4[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Sun Jan 3 23:51:18 2021 -0500
+
+    encriptar contraseña en serializadores
+
+[33mcommit d6e5a679778db27d02b5f6011d25c56976c891f6[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Sun Jan 3 23:00:35 2021 -0500
+
+    to_representation agregada y explicada
+
+[33mcommit 9c35e5d5d46f4a0ed5b92d314255a1e84f9f071a[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Mon Dec 28 00:57:15 2020 -0500
+
+    metodo update de un serializer y metodo save de un serializer
+
+[33mcommit 386f37f1a1c7e44e8744f968145392f9da71e2b1[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Mon Dec 28 00:26:24 2020 -0500
+
+    metodo create en un serializer
+
+[33mcommit ddfc0fbca9c5184ec6fdc9a6934a07836b9ba19c[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Sat Dec 19 02:03:28 2020 -0500
+
+    validaciones en serializadores
+
+[33mcommit 949d1c263b8b061f46697d3558a39dfc3bf4126f[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Tue Dec 15 01:17:21 2020 -0500
+
+    agregada funcion de detalle de usuario, corrección en codigo para optimizarlo y refactorizarlo, hacer entendible el codigo
+
+[33mcommit 24ee390ad874e1d57e0d3f950b0ea739c923824d[m
+Author: Oliver Sandoval <sandovalot@hotmail.com>
+Date:   Fri Nov 27 01:41:53 2020 -0500
+
+    commit hasta 5 video de curso de Django Rest Framework, registro con api_view utilizando serializador
