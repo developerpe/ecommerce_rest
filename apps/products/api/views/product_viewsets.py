@@ -1,10 +1,7 @@
-from rest_framework import generics
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-from apps.base.api import GeneralListApiView
-from apps.users.authentication_mixins import Authentication
 from apps.products.api.serializers.product_serializers import ProductSerializer
 
 

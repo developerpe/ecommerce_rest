@@ -38,6 +38,7 @@ THIRD_APPS = [
     'automatic_crud',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'simple_history',
     'drf_yasg',
 ]
@@ -48,12 +49,13 @@ SWAGGER_SETTINGS = {
     'DOC_EXPANSION': 'none'
 }
 
-TOKEN_EXPIRED_AFTER_SECONDS = 80000
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'apps.users.authentication_mixins.Authentication',
-    ]
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
 
 MIDDLEWARE = [    
