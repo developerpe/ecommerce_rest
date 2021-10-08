@@ -40,7 +40,7 @@ class Login(TokenObtainPairView):
 
 class Logout(GenericAPIView):
     def post(self, request, *args, **kwargs):
-        user = User.objects.filter(id=request.data.get('user', ''))
+        user = User.objects.filter(id=request.data.get('user', 0))
         if user.exists():
             RefreshToken.for_user(user.first())
             return Response({'message': 'Sesión cerrada correctamente.'}, status=status.HTTP_200_OK)

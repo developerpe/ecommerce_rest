@@ -14,8 +14,6 @@ class ProductViewSet(viewsets.ModelViewSet):
         return self.get_serializer().Meta.model.objects.filter(id=pk, state=True).first()
 
     def list(self, request):
-        for key, value in request.__dict__.items():
-            print(key, '==', value)
         product_serializer = self.get_serializer(self.get_queryset(), many=True)
         return Response(product_serializer.data, status=status.HTTP_200_OK)
 

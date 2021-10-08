@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,8 +38,9 @@ THIRD_APPS = [
     'corsheaders',
     'automatic_crud',
     'rest_framework',
-    'rest_framework.authtoken',
-    'rest_framework_simplejwt',
+    #'rest_framework.authtoken',
+    'rest_framework_simplejwt',  
+    'rest_framework_simplejwt.token_blacklist',  
     'simple_history',
     'drf_yasg',
 ]
@@ -128,7 +130,12 @@ AUTH_USER_MODEL = 'users.User'
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000"
 ]
-
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
