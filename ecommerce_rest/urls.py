@@ -35,6 +35,6 @@ urlpatterns = [
    path('login/',Login.as_view(), name = 'login'),
    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-   path('usuario/',include('apps.users.api.urls')),
+   path('users/',include('apps.users.api.routers')),
    path('products/',include('apps.products.api.routers')),
 ]
