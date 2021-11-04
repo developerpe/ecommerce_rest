@@ -21,7 +21,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         # send information to serializer
-        serializer = self.serializer_class(data=request.data)        
+        serializer = self.serializer_class(data=request.data)     
         if serializer.is_valid():
             serializer.save()
             return Response({'message': 'Producto creado correctamente!'}, status=status.HTTP_201_CREATED)

@@ -1,5 +1,4 @@
 from django.db import models
-from simple_history.models import HistoricalRecords
 
 from apps.base.models import BaseModel
 # Create your models here.
@@ -9,15 +8,6 @@ class MeasureUnit(BaseModel):
 
     # TODO: Define fields here
     description = models.CharField('Descripción', max_length=50,blank = False,null = False,unique = True)
-    historical = HistoricalRecords()
-
-    @property
-    def _history_user(self):
-        return self.changed_by
-
-    @_history_user.setter
-    def _history_user(self, value):
-        self.changed_by = value
 
     class Meta:
         """Meta definition for MeasureUnit."""
@@ -34,15 +24,6 @@ class CategoryProduct(BaseModel):
 
     # TODO: Define fields here
     description = models.CharField('Descripcion', max_length=50,unique = True,null = False,blank = False)
-    historical = HistoricalRecords()
-
-    @property
-    def _history_user(self):
-        return self.changed_by
-
-    @_history_user.setter
-    def _history_user(self, value):
-        self.changed_by = value
 
     class Meta:
         """Meta definition for CategoryProduct."""
@@ -60,15 +41,6 @@ class Indicator(BaseModel):
     # TODO: Define fields here
     descount_value = models.PositiveSmallIntegerField(default = 0)
     category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name = 'Indicador de Oferta')
-    historical = HistoricalRecords()
-
-    @property
-    def _history_user(self):
-        return self.changed_by
-
-    @_history_user.setter
-    def _history_user(self, value):
-        self.changed_by = value
 
     class Meta:
         """Meta definition for Indicator."""
@@ -89,15 +61,6 @@ class Product(BaseModel):
     image = models.ImageField('Imagen del Producto', upload_to='products/', blank=True, null=True)
     measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE, verbose_name='Unidad de Medida', null=True)
     category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Categoria de Producto', null=True)
-    historical = HistoricalRecords()
-
-    @property
-    def _history_user(self):
-        return self.changed_by
-
-    @_history_user.setter
-    def _history_user(self, value):
-        self.changed_by = value
 
     class Meta:
         """Meta definition for Product."""
