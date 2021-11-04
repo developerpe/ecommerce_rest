@@ -15,6 +15,8 @@ django-cors-headers==3.4.0
 django-rest-framework==0.1.0
 django-simple-history==2.11.0
 djangorestframework==3.11.0
+#rest framework simple jwt
+djangorestframework-simplejwt==5.0.0
 drf-yasg==1.20.0
 et-xmlfile==1.0.1
 html5lib==1.0.1
