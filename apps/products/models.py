@@ -84,11 +84,11 @@ class Product(BaseModel):
     """Model definition for Product."""
 
     # TODO: Define fields here
-    name = models.CharField('Nombre de Producto', max_length=150, unique = True,blank = False,null = False)
-    description = models.TextField('Descripción de Producto',blank = False,null = False)
-    image = models.ImageField('Imagen del Producto', upload_to='products/',blank = True,null = True)
-    measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE,verbose_name = 'Unidad de Medida', null = True)
-    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE,verbose_name = 'Categoria de Producto', null = True)
+    name = models.CharField('Nombre de Producto', max_length=150, unique=True, blank=False, null=False)
+    description = models.TextField('Descripción de Producto', blank=False, null=False)
+    image = models.ImageField('Imagen del Producto', upload_to='products/', blank=True, null=True)
+    measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE, verbose_name='Unidad de Medida', null=True)
+    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Categoria de Producto', null=True)
     historical = HistoricalRecords()
 
     @property

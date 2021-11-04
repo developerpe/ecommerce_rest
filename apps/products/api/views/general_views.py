@@ -4,7 +4,9 @@ from rest_framework.response import Response
 
 from apps.base.api import GeneralListApiView
 from apps.products.models import MeasureUnit
-from apps.products.api.serializers.general_serializers import MeasureUnitSerializer,IndicatorSerializer,CategoryProductSerializer
+from apps.products.api.serializers.general_serializers import (
+    MeasureUnitSerializer, IndicatorSerializer, CategoryProductSerializer
+)
 
 class MeasureUnitViewSet(viewsets.GenericViewSet):
     model = MeasureUnit
@@ -17,9 +19,6 @@ class MeasureUnitViewSet(viewsets.GenericViewSet):
         data = self.get_queryset()
         data = self.get_serializer(data, many=True)
         return Response(data.data)
-    
-    def create(self, request):
-        return Response({})
 
 class IndicatorViewSet(viewsets.GenericViewSet):
     serializer_class = IndicatorSerializer
