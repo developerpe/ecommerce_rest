@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from apps.base.models import BaseModel
 from apps.products.models import Product
 
-class Provider(BaseModel):
+class Supplier(BaseModel):
     ruc = models.CharField(unique=True, max_length=11)
     business_name = models.CharField('Razón Social',max_length=150, null=False, blank=False)
     address = models.CharField(max_length=200)
@@ -55,19 +55,14 @@ class ExpenseCategory(BaseModel):
         return self.name
 
 class Expense(BaseModel):
-    date = models.DateField(
-        'Fecha de emisión de factura', auto_now=False, auto_now_add=False)    
+    date = models.DateField('Fecha de emisión de factura', auto_now=False, auto_now_add=False)    
     quantity = models.DecimalField('Cantidad', max_digits=10, decimal_places=2)
-    unit_price = models.DecimalField(
-        'Precio Unitario', max_digits=10, decimal_places=2, default=0)
-    voucher_number = models.CharField(
-        'Número de comprobante', max_length=50)
-    total = models.DecimalField(
-        'Total', max_digits=10, decimal_places=2, default=0)
+    unit_price = models.DecimalField('Precio Unitario', max_digits=10, decimal_places=2, default=0)
+    voucher_number = models.CharField('Número de comprobante', max_length=50)
+    total = models.DecimalField('Total', max_digits=10, decimal_places=2, default=0)
     voucher = models.ForeignKey(Voucher, on_delete=models.CASCADE)
     user = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    provider = models.ForeignKey(
-        Provider, on_delete=models.CASCADE)
+    provider = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
@@ -79,26 +74,11 @@ class Expense(BaseModel):
     def __str__(self):
         return self.product
 
-    def save(self, *args, **kwargs):
-        try:
-            product = Product.objects.get(id=self.concepto.id)
-            product.quantity += self.quantity
-            product.save()
-        except ObjectDoesNotExist as e:
-            print("Producto No Registrado!")
-
-        if self.unit_price == 0:
-            self.unit_price = (self.quantity / self.cantidad)
-        if self.quantity == 0:
-            self.quantity = (self.unit_price * self.cantidad)
-        super(Expense, self).save(*args, **kwargs)
-
-
 class Merma(BaseModel):
-    date = models.DateField('Fecha de emisión de Merma', auto_now = False, auto_now_add = False)
+    date = models.DateField('Fecha de emisión de Merma', auto_now=False, auto_now_add=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.DecimalField('Cantidad', max_digits = 7, decimal_places = 2)
-    money_loss = models.DecimalField('Dinero perdido', max_digits = 7, decimal_places = 2)
+    quantity = models.DecimalField('Cantidad', max_digits=7, decimal_places=2)
+    lost_money = models.DecimalField('Dinero perdido', max_digits=7, decimal_places=2)
 
     class Meta:
         ordering = ['id']
@@ -107,8 +87,4 @@ class Merma(BaseModel):
 
 
     def __str__(self):
-        return "Merma de {0}".format(self.product.name)
-
-    def save(self, *args, **kwargs):
-        self.money_loss = self.product.cost_price * self.quantity
-        super(Merma, self).save(*args, **kwargs)
+        return "Merma de {0}".format(self.product.__str__())

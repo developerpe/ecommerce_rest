@@ -15,10 +15,46 @@ class MeasureUnitViewSet(viewsets.GenericViewSet):
     def get_queryset(self):
         return self.get_serializer().Meta.model.objects.filter(state=True)
 
+    def get_object(self):
+        return self.get_serializer().Meta.model.objects.filter(id=self.kwargs['pk'], state=True)
+
     def list(self, request):
         data = self.get_queryset()
         data = self.get_serializer(data, many=True)
-        return Response(data.data)
+        data = {
+            "total": self.get_queryset().count(),
+            "totalNotFiltered": self.get_queryset().count(),
+            "rows": data.data
+        }
+        return Response(data)
+
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message':'Unidad de Medida registrada correctamente!'}, status=status.HTTP_201_CREATED)
+        return Response({'message':'', 'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        if self.get_object().exists():
+            data = self.get_object().get()
+            data = self.get_serializer(data)
+            return Response(data.data)
+        return Response({'message':'', 'error':'Unidad de Medida no encontrada!'}, status=status.HTTP_400_BAD_REQUEST)
+
+    def update(self, request, pk=None):
+        if self.get_object().exists():
+            serializer = self.serializer_class(instance=self.get_object().get(), data=request.data)       
+            if serializer.is_valid():       
+                serializer.save()       
+                return Response({'message':'Unidad de Medida actualizada correctamente!'}, status=status.HTTP_200_OK)       
+        return Response({'message':'', 'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)    
+
+    def destroy(self, request, pk=None):       
+        if self.get_object().exists():       
+            self.get_object().get().delete()       
+            return Response({'message':'Unidad de Medida eliminada correctamente!'}, status=status.HTTP_200_OK)       
+        return Response({'message':'', 'error':'Unidad de Medida no encontrada!'}, status=status.HTTP_400_BAD_REQUEST)
 
 class IndicatorViewSet(viewsets.GenericViewSet):
     serializer_class = IndicatorSerializer
@@ -28,8 +64,13 @@ class IndicatorViewSet(viewsets.GenericViewSet):
 
     def list(self, request):
         data = self.get_queryset()
-        data = self.get_serializer(data,many = True)
-        return Response(data.data)
+        data = self.get_serializer(data,many=True)
+        data = {
+            "total": self.get_queryset().count(),
+            "totalNotFiltered": self.get_queryset().count(),
+            "rows": data.data
+        }
+        return Response(data)
 
 class CategoryProductViewSet(viewsets.GenericViewSet):
     serializer_class = CategoryProductSerializer
@@ -43,7 +84,12 @@ class CategoryProductViewSet(viewsets.GenericViewSet):
     def list(self, request):
         data = self.get_queryset()
         data = self.get_serializer(data, many=True)
-        return Response(data.data)
+        data = {
+            "total": self.get_queryset().count(),
+            "totalNotFiltered": self.get_queryset().count(),
+            "rows": data.data
+        }
+        return Response(data)
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -51,6 +97,13 @@ class CategoryProductViewSet(viewsets.GenericViewSet):
             serializer.save()
             return Response({'message':'Categoría registrada correctamente!'}, status=status.HTTP_201_CREATED)
         return Response({'message':'', 'error':serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        if self.get_object().exists():
+            data = self.get_object().get()
+            data = self.get_serializer(data)
+            return Response(data.data)
+        return Response({'message':'', 'error':'Categoría no encontrada!'}, status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, pk=None):
         if self.get_object().exists():

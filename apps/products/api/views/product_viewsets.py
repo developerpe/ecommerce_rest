@@ -17,7 +17,12 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         product_serializer = self.get_serializer(self.get_queryset(), many=True)
-        return Response(product_serializer.data, status=status.HTTP_200_OK)
+        data = {
+            "total": self.get_queryset().count(),
+            "totalNotFiltered": self.get_queryset().count(),
+            "rows": product_serializer.data
+        }
+        return Response(data, status=status.HTTP_200_OK)
 
     def create(self, request):
         # send information to serializer
@@ -36,7 +41,7 @@ class ProductViewSet(viewsets.ModelViewSet):
                 return Response(product_serializer.data, status=status.HTTP_200_OK)
             return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def destroy(self,request,pk=None):
+    def destroy(self, request, pk=None):
         product = self.get_queryset().filter(id=pk).first() # get instance        
         if product:
             product.state = False
