@@ -26,3 +26,9 @@ class IndicatorSerializer(serializers.ModelSerializer):
             'descount_value': instance.descount_value,
             'category_product': instance.category_product.__str__()
         }
+
+class IndicatorUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Indicator
+        exclude = ('state','created_date','modified_date','deleted_date')    
