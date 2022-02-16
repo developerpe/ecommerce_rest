@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.expense_manager.models import Supplier
+
+admin.site.register(Supplier)

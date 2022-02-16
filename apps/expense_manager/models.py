@@ -1,12 +1,11 @@
 from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
 
 from apps.base.models import BaseModel
 from apps.products.models import Product
 
 class Supplier(BaseModel):
     ruc = models.CharField(unique=True, max_length=11)
-    business_name = models.CharField('Razón Social',max_length=150, null=False, blank=False)
+    business_name = models.CharField('Razón Social', unique=True, max_length=150, null=False, blank=False)
     address = models.CharField(max_length=200)
     phone = models.CharField(max_length=15, null=True, blank=True)
     email = models.EmailField(null=True)
@@ -20,7 +19,7 @@ class Supplier(BaseModel):
         return self.business_name
 
 class PaymentType(BaseModel):
-    name = models.CharField('Nombre de Medio de Pago', max_length = 100)
+    name = models.CharField('Nombre de Medio de Pago', max_length=100)
 
     class Meta:
         ordering = ['id']
@@ -32,7 +31,7 @@ class PaymentType(BaseModel):
 
 
 class Voucher(BaseModel):
-    name = models.CharField('Nombre de comprobante de Pago', max_length = 100)
+    name = models.CharField('Nombre de comprobante de Pago', max_length=100)
 
     class Meta:
         ordering = ['id']
@@ -44,7 +43,7 @@ class Voucher(BaseModel):
 
 
 class ExpenseCategory(BaseModel):
-    name = models.CharField('Nombre de Categoría de Gasto', max_length = 100)
+    name = models.CharField('Nombre de Categoría de Gasto', max_length=100)
 
     class Meta:
         ordering = ['id']
@@ -62,7 +61,7 @@ class Expense(BaseModel):
     total = models.DecimalField('Total', max_digits=10, decimal_places=2, default=0)
     voucher = models.ForeignKey(Voucher, on_delete=models.CASCADE)
     user = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    provider = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 

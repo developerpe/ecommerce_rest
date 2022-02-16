@@ -1,7 +1,7 @@
 from django.urls import path
 
-from apps.products.api.views.general_views import MeasureUnitListAPIView,IndicatorListAPIView,CategoryProductListAPIView
-from apps.products.api.views.product_views import (
+from apps.products.api.viewsets.general_views import MeasureUnitListAPIView,IndicatorListAPIView,CategoryProductListAPIView
+from apps.products.api.viewsets.product_views import (
     ProductListCreateAPIView,ProductRetrieveUpdateDestroyAPIView
 )
 

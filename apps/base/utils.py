@@ -1,16 +1,15 @@
 def validate_files(request, field, update=False):
-    """
-    
+    """ 
     :params
     :request: request.data
-    :field: key of file
-    
+    :field: key of file    
     """
-    request._mutable = True
+    
+    request = request.copy()
+
     if update:
-        if type(request[field]) == str:
-            del request[field]
+        if type(request[field]) == str: request.__delitem__(field)
     else:
-        request[field] = None if type(request[field]) == str else request[field]
-    request._mutable = False
+        if type(request[field]) == str: request.__setitem__(field, None)        
+
     return request

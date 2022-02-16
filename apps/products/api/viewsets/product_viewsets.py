@@ -8,7 +8,6 @@ from apps.products.api.serializers.product_serializers import (
     ProductSerializer, ProductRetrieveSerializer
 )
 
-
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     parser_classes = (JSONParser, MultiPartParser, )
