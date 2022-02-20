@@ -18,6 +18,16 @@ class Supplier(BaseModel):
     def __str__(self):
         return self.business_name
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'ruc': self.ruc,
+            'business_name': self.business_name,
+            'address': self.address,
+            'phone': self.phone,
+            'email': self.email
+        }
+
 class PaymentType(BaseModel):
     name = models.CharField('Nombre de Medio de Pago', max_length=100)
 

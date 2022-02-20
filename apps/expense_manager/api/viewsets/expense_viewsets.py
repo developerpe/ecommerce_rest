@@ -1,3 +1,5 @@
+from crypt import methods
+from os import stat
 from django.db.models import Q
 
 from rest_framework import status
@@ -26,3 +28,15 @@ class ExpenseViewSet(viewsets.GenericViewSet):
         return Response({
             'mensaje': 'No se ha encontrado un Proveedor.'
         }, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(methods=['post'], detail=False)
+    def new_suplier(self ,request):
+        data_supplier = request.data
+        data_supplier = SupplierRegisterSerializer(data=data_supplier)
+        if data_supplier.is_valid():
+            data_supplier = data_supplier.save()
+            return Response({
+                'message:': 'Proveedor registrado correctamente!',
+                'supplier': data_supplier
+            }, status=status.HTTP_201_CREATED)
+        return Response({'error': data_supplier.errors}, status=status.HTTP_400_BAD_REQUEST)
