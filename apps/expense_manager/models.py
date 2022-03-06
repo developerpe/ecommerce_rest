@@ -81,7 +81,7 @@ class Expense(BaseModel):
         verbose_name_plural = 'Gastos'
 
     def __str__(self):
-        return self.product
+        return self.voucher_number
 
 class Merma(BaseModel):
     date = models.DateField('Fecha de emisión de Merma', auto_now=False, auto_now_add=False)
