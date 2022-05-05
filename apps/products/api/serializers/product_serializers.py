@@ -9,7 +9,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Product
-        exclude = ('state','created_date','modified_date','deleted_date')
+        exclude = ('stock', 'state','created_date','modified_date','deleted_date')
 
     def validate_measure_unit(self, value):
         if value == '' or value == None:
@@ -38,6 +38,7 @@ class ProductSerializer(serializers.ModelSerializer):
         return {
             'id': instance.id,
             'name': instance.name,
+            'stock': instance.stock['quantity__sum'] if instance.stock['quantity__sum'] is not None else 0,
             'description': instance.description,
             'image': instance.image.url if instance.image != '' else '',
             'measure_unit': instance.measure_unit.description if instance.measure_unit is not None else '',

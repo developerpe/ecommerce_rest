@@ -11,7 +11,7 @@ class SupplierFactory:
             'ruc': str(faker.random_number(digits=11)),
             'business_name': faker.company(),
             'address': faker.address(),
-            'phone': faker.phone_number(),
+            'phone': str(faker.random_number(digits=11)),
             'email': faker.email()
         }
 

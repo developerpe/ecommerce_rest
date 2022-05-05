@@ -36,7 +36,7 @@ class ExpenseViewSet(viewsets.GenericViewSet):
     @action(methods=['post'], detail=False)
     def new_suplier(self ,request):
         data_supplier = request.data
-        data_supplier = SupplierRegisterSerializer(data=data_supplier)
+        data_supplier = SupplierRegisterSerializer(data=data_supplier)        
         if data_supplier.is_valid():
             data_supplier = data_supplier.save()
             return Response({
