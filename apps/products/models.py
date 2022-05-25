@@ -7,7 +7,7 @@ class MeasureUnit(BaseModel):
     """Model definition for MeasureUnit."""
 
     # TODO: Define fields here
-    description = models.CharField('Descripción', max_length=50,blank = False,null = False,unique = True)
+    description = models.CharField('Descripción', max_length=50, blank=False, null=False, unique=True)
 
     class Meta:
         """Meta definition for MeasureUnit."""
@@ -23,7 +23,7 @@ class CategoryProduct(BaseModel):
     """Model definition for CategoryProduct."""
 
     # TODO: Define fields here
-    description = models.CharField('Descripcion', max_length=50,unique = True,null = False,blank = False)
+    description = models.CharField('Descripcion', max_length=50, unique=True, null=False, blank=False)
 
     class Meta:
         """Meta definition for CategoryProduct."""
@@ -39,8 +39,8 @@ class Indicator(BaseModel):
     """Model definition for Indicator."""
 
     # TODO: Define fields here
-    descount_value = models.PositiveSmallIntegerField(default = 0)
-    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name = 'Indicador de Oferta')
+    descount_value = models.PositiveSmallIntegerField(default=0)
+    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Indicador de Oferta')
 
     class Meta:
         """Meta definition for Indicator."""
