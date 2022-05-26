@@ -1,3 +1,4 @@
+from itertools import product
 from django.db import models
 
 from apps.base.models import BaseModel
@@ -81,4 +82,5 @@ class Product(BaseModel):
             product=self,
             state=True
         ).aggregate(Sum('quantity'))
+
         return expenses
