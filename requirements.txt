@@ -10,15 +10,14 @@ coreschema==0.0.4
 distlib==0.3.0
 distro==1.4.0
 Django==3.1.7
-django-automatic-crud==1.0.5
 django-cors-headers==3.4.0
 django-rest-framework==0.1.0
 django-simple-history==2.11.0
 djangorestframework==3.11.0
-#rest framework simple jwt
 djangorestframework-simplejwt==5.0.0
 drf-yasg==1.20.0
 et-xmlfile==1.0.1
+Faker==13.3.4
 html5lib==1.0.1
 idna==2.8
 inflection==0.5.1
@@ -35,7 +34,9 @@ pep517==0.8.2
 Pillow==7.2.0
 progress==1.5
 psycopg2-binary==2.8.5
+PyJWT==2.3.0
 pyparsing==2.4.6
+python-dateutil==2.8.2
 pytoml==0.1.21
 pytz==2021.1
 requests==2.22.0
